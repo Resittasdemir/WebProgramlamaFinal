@@ -1,4 +1,4 @@
-package com.uzeyirdemiral;
+package com.resittasdemir;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

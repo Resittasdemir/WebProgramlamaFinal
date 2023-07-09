@@ -1,4 +1,4 @@
-package com.uzeyirdemiral;
+package com.resittasdemir;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;

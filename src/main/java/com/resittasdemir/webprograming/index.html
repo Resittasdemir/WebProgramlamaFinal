@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Formu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="signup-form">
+    <form action="index.html">
+        <h1>REGISTER</h1>
+        <button class = "icon"><i class="fa-brands fa-facebook-f"></i></button>
+        <button class ="icon"><i class="fa-brands fa-google"></i></button>
+        <button class="icon"><i class="fa-brands fa-yandex-international"></i></button>
+        <small style="display:block;">or use your email address:</small>
+        <input type="text" placeholder="First Name" class="txt" id="name">
+        <input type="email" placeholder="Email" class="txt" id="email">
+        <input type="password" placeholder="Password" class="txt" id="password">
+        <input type="password" placeholder="Confirm password" class="txt" id="confirmpassword">
+        <input type="submit" value="CREATE ACCOUNT" class="signup-btn" id="kayıtid">
+        <small>Already have an account?</small>
+        <a href="#" >Sign In</a>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#kayıtid").click(function (e){
+            e.preventDefault();
+
+            // Form gönderildiğinde input değerlerini alıyoruz
+            let Jquerydto = {
+                firstname: $("#name").val(),
+                email: $("#email").val(),
+                password: $("#password").val(),
+                confirmpassword: $("#confirmpassword").val()
+            };
+
+            // AJAX isteği gönderiyoruz
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/api/jquery/post',
+                data: JSON.stringify(Jquerydto),
+                contentType: 'application/json',
+                success: function(response) {
+                    console.log("NAME: " + response.firstname);
+                    console.log("EMAİL: " + response.email);
+                    console.log("PASSWORD: " + response.password);
+                    console.log("CONFİRMPASSWORD: " + response.confirmpassword);
+
+                },
+                error: function(error) {
+                    console.log('Hata oluştu: ' + error);
+                }
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>
+
+
